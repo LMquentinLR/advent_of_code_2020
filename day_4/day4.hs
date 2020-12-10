@@ -18,12 +18,12 @@ isInRange lower upper x = lower <= x && upper >= x
 
 isHeight :: String -> Bool
 isHeight measure
-    | unit == "mc" && isInRange 150 193 (read value::Int) = True
-    | unit == "ni" && isInRange 59 76 (read value::Int) = True
+    | unit == "mc" && isInRange 150 193 value = True
+    | unit == "ni" && isInRange 59 76 value = True
     | otherwise = False
   where 
       unit = take 2 $ reverse measure
-      value = take (length measure-2) measure
+      value = read (take (length measure-2) measure)::Int
 
 substringExists :: String -> String -> Bool
 substringExists pattern value = isJust(matchRegex regPattern value)
@@ -52,7 +52,5 @@ checkValidity part passport = if part==1 then cond1 else cond1 && cond2
 main :: IO()
 main = do
     ls <- parsePassport <$> readContent
-    -- part 1
     print $ sum $ map (fromEnum . checkValidity 1) ls
-    -- part 2
     print $ sum $ map (fromEnum . checkValidity 2) ls

@@ -14,10 +14,6 @@ cycleElement element index = tree
             then 1
             else 0
 
--- recursiveReadOld :: [[Char]] -> Int -> [Int]
--- recursiveReadOld [] _ = []
--- recursiveReadOld (x:xs) index = (cycleElement x index) : (recursiveRead xs $ index + 3)
-
 recursiveRead :: [[Char]] -> Index -> (Slope, MoveDown) -> [Int]
 recursiveRead [] _ _ = []
 recursiveRead (x:xs) index strategy = processedArea : nextArea
