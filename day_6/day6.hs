@@ -23,7 +23,7 @@ intersectingAnswers groupAnswers
       end = tail groupAnswers
 
 countIntersectingAnswers :: [[String]] -> Int
-countIntersectingAnswers answers = sum $ map (sum . fmap length) $ commonAnswers
+countIntersectingAnswers answers = sum $ map (sum . fmap length) commonAnswers
   where
       commonAnswers = map intersectingAnswers answers
 
