@@ -18,7 +18,7 @@ createInstructions :: String -> (String, String) -> [Instruction]
 createInstructions bag occurences
     | occurence == "contain" = [(bag, bag, [subBag])]
     | otherwise        = concatMap (replicate (read occurence :: Int)) [(bag, bag, [subBag])] 
-  where 
+  where
     occurence = fst occurences
     subBag = snd occurences
 
